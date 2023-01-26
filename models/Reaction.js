@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema } = require('mongoose');   // #??? - Is this correct? Do I need to add anything from the Reaction schema here?
 
 // Schema to create Thought model
 const reactionSchema = new Schema(

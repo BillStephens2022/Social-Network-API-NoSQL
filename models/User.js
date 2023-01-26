@@ -16,7 +16,7 @@ const userSchema = new Schema(
         match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
     },
     thoughts: [{ type: Schema.Types.ObjectId, ref: 'thought' }],
-    friends: [{ type: Schema.Types.ObjectId, ref: 'friend' }],   // or is it user? - #VERIFY
+    friends: [{ type: Schema.Types.ObjectId, ref: 'user' }],   // #??? - Is this correct?
   
     // Indicates that virtuals to be included with our response
     toJSON: {
