@@ -13,6 +13,8 @@ const {
 // Endpoint: /api/users
 router.route('/').get(getAllUsers).post(createUser);
 
+router.route('/:userId').get(getSingleUser);
+
 // GET all users
 // GET a single user by its _id and populated thought and friend data
 // POST a new user
