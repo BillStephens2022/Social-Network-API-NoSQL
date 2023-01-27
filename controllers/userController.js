@@ -1,15 +1,19 @@
 const { ObjectId } = require('mongoose').Types;
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
     getAllUsers(req, res) {
       User.find()
+        .populate('thoughts')
+        .populate('friends')
         .then((users) => res.json(users))
         .catch((err) => res.status(500).json(err));
     },
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.userId })
           .select('-__v')
+          .populate('thoughts')
+          .populate('friends')
           .then((user) =>
             !user
               ? res.status(404).json({ message: 'No user with that ID' })
@@ -24,8 +28,8 @@ module.exports = {
     },
 }
 
-// GET all users
-// GET a single user by its _id and populated thought and friend data
+// GET all users 
+// GET a single user by its _id and populated thought and friend data 
 // POST a new user
 // PUT to update a user by its _id
 // DELETE to remove user by its _id
