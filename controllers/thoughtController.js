@@ -38,6 +38,28 @@ module.exports = {
           )
           .catch((err) => res.status(500).json(err));
     },
+    updateThought(req, res) {
+        Thought.findByIdAndUpdate(
+            ObjectId(req.params.thoughtId),
+          { $set: req.body },
+          { new: true }
+        )
+        .then((thought) =>
+          !thought 
+            ? res.status(404).json({ message: "No thought found with that ID" })
+            : res.json(thought)
+        )
+        .catch((err) => res.status(500).json(err));
+    },
+    deleteThought(req, res) {
+        Thought.findByIdAndRemove(ObjectId(req.params.thoughtId))
+          .then((thought) =>
+              !thought  
+                ? res.status(404).json({ message: "No thought found with that ID" })
+                : res.json({ message: "Thought deleted!"})
+          )
+          .catch ((err) => res.status(500).json(err));
+    }
 }
 
 // GET to get all thoughts

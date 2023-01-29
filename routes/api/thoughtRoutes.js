@@ -13,7 +13,15 @@ const {
 // Endpoint: /api/thoughts
 
 router.route('/').get(getAllThoughts).post(createThought);
-router.route('/:thoughtId').get(getSingleThought);
+
+// Endpoint: /api/thoughts/:thoughtId
+router.route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
+
+// Endpoint: /api/thoughts/:thoughtId/reactions
+//router.route('/:thoughtId/reactions').post(createReaction);
+
+// Endpoint: /api/thoughts/:thoughtId/reactions/:reactionId
+//router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
 
 // GET to get all thoughts
 // GET to get a single thought by its _id
