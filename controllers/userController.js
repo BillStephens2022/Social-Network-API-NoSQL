@@ -1,6 +1,8 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
+// Functions for Users and Friends
+
 module.exports = {
     getAllUsers(req, res) {
       User.find()
