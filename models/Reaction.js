@@ -1,4 +1,5 @@
 const { Schema, Types } = require('mongoose');
+const formatDate = require('../utils/formatDate');
 
 // Schema to create Thought model
 const reactionSchema = new Schema(
@@ -19,12 +20,14 @@ const reactionSchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
+        get: formatDate
     }
   },
   {
     // Indicates that virtuals to be included with our response
     toJSON: {
       virtuals: true,
+      getters: true
     },
     id: false,
   }
