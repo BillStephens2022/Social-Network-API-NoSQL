@@ -15,6 +15,8 @@ router.route('/').get(getAllUsers).post(createUser);
 
 router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
 
+router.route('/:userId/friends/:friendId').post(addFriend).delete(deleteFriend);
+
 // GET all users
 // GET a single user by its _id and populated thought and friend data
 // POST a new user
